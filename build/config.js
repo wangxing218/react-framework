@@ -4,7 +4,7 @@ module.exports = {
     // 本地server的host，为空时默认自动获取本机ip
     host: '127.0.0.1',
     // 本地server端口
-    port: 9000,
+    port: 8000,
     // 代理配置
     proxy: {
       // '/api': 'https://www.douban.com/api',

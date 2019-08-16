@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { message } from 'antd'
 import urlTool from '@/util/url'
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -46,6 +47,7 @@ const ajax = async (opt) => {
   }
   // 自动处理错误
   function handleError(err) {
+    if (opt.error === undefined) return message.error(err.msg)
     typeof opt.error == 'function' && opt.error(err)
   }
 }
