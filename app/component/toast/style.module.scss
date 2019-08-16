@@ -1,0 +1,29 @@
+.mea-toast {
+  position: fixed;
+  z-index: 9999;
+  line-height: 17px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 100px;
+}
+
+.mea-toast-message {
+  font-size: 14px;
+  padding: 12px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+  background: #323232;
+  opacity: .9;
+}
+
+.mea-fade-enter,
+.mea-fade-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -120px);
+}
+
+.mea-fade-enter-active,
+.mea-fade-leave-active {
+  transition: transform .25s , opacity .25s;
+}

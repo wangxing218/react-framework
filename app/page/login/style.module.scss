@@ -1,0 +1,20 @@
+.con{
+  width: 380px;
+  padding: 30px;
+  margin: 100px auto 0;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 1px 24px #eee;
+}
+.title{
+  font-size: 22px;
+  padding-bottom: 30px;
+  color: $color-blue;
+}
+.icon{
+  opacity: .3;
+}
+.vcode{
+  height: 40px;
+  cursor: pointer;
+}

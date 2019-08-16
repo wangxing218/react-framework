@@ -1,0 +1,10 @@
+/* 项目专用样式 */
+body{
+  background-color: $color-border-4;
+  height: auto;
+}
+.wrap{
+  @include layout();
+  width: 900px;
+  background-color: #fff;
+}
