@@ -81,8 +81,8 @@ var config = {
         commons: {
           chunks: 'initial',
           minChunks: 2,
-          maxInitialRequests: 5,
-          minSize: 0
+          name: 'common',
+          priority: 0,
         },
         vendor: {
           test: /node_modules/,
@@ -92,7 +92,7 @@ var config = {
           enforce: true
         },
         element: {
-          test: /antd/,
+          test: /ant/,
           chunks: 'initial',
           name: 'antd',
           priority: 2,
