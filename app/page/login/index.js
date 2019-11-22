@@ -62,7 +62,7 @@ class Login extends React.Component {
   }
   // 切换验证码
   changeVcode = e => {
-    let vcode = BASE_URL + '/vcode?' + Date.now()
+    let vcode = process.env.BASE_URL + '/vcode?' + Date.now()
     this.setState({
       vcode
     })

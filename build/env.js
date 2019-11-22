@@ -64,6 +64,7 @@ const getCssOptions = (type, modules) => {
 // webpack基本配置
 var config = {
   mode: Mode,
+  devtool: Mode === 'development' ? 'cheap-module-eval-source-map' : 'none',
   entry: {
     home: util.appResolve('entry/main.js')
   },
@@ -144,9 +145,11 @@ var config = {
   plugins: [
     // 定义环境变量，可在页面直接使用
     new webpack.DefinePlugin({
-      BASE_URL: JSON.stringify(configUser.baseUrl),
-      CDN_URL: JSON.stringify(configUser.cdnUrl),
-      ENV: JSON.stringify(process.env.NODE_ENV),
+      'process.env': Object.assign(configUser.env || {}, {
+        BASE_URL: JSON.stringify(configUser.baseUrl),
+        CDN_URL: JSON.stringify(configUser.cdnUrl),
+        ENV: JSON.stringify(process.env.NODE_ENV),
+      })
     }),
     // 清空编译目录
     new CleanWebpackPlugin([util.distResolve()], {
@@ -215,6 +218,7 @@ if (process.env.NODE_ENV === 'dev') {
       noInfo: true,
       hot: configUser.hot,
       overlay: true,
+      disableHostCheck: true,
       clientLogLevel: 'error',
       watchOptions: {
         poll: 1000,
@@ -226,7 +230,6 @@ if (process.env.NODE_ENV === 'dev') {
   // 添加热更新插件，output改用hash模式
   if (configUser.hot) {
     config.plugins.push(new webpack.HotModuleReplacementPlugin())
-
     config.output = Object.assign({}, config.output, {
       filename: config.output.filename.replace(/contenthash/, 'hash'),
       chunkFilename: config.output.chunkFilename.replace(/contenthash/, 'hash')
